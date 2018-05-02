@@ -44,16 +44,18 @@ BASIC STEPS TO FOLLOW – TOTAL 8 Steps:
         // Default – No change
         import registerServiceWorker from "./registerServiceWorker"; 
 
-        // NEW:Call the Provider Object using ‘react-redux’
+        // NEW:Call the Provider COMPONENT using ‘react-redux’ - THIS COMPONENT PROVIDES YOUR APP WITH 'STORE'
         import { Provider } from "react-redux";
 
         // NEW:Check the redux diagram–we need to create a store & apply middlewear
+        // 'createStore'& 'applyMiddleware' IS A FUNCTION
+        // GENERALL RULE IS THAT IF THE FIRST LETTER IS CAPITAL THAN ITS LIKELY TO BE A COMPONENT AND IN OTHER CASES ITS LIKELY TO BE A FUNCTION OR A VARIABLE.
         import { createStore, applyMiddleware } from "redux";
 
         // NEW:calling directory will automatically look for index.js & this is a file which imports other reducers and merge them. Mainly in our example it is “DataReducer.JS”
         import reducers from "./reducers";
 
-        // NEW:calling reduxThunk [Dispatcher Part]
+        // NEW:IMPORTING reduxThunk [WHICH IS THE Dispatcher AKA MIDDLEWEAR Part]
         import reduxThunk from "redux-thunk";
 
         // NEW:Finally initiating the store and passing reducers plus middlewear as reduxThunk – because it’s a dispatcher.
@@ -117,7 +119,7 @@ Here is a sample of the file code with details:
 
         // state is passed as an array although it should be obj along with ‘action’.
         // we expect returned state to be an Array obj – hence.
-
+        // IMPORTANT: HERE WE ARE EXPORTING A FUNTION AND THIS IS AN EXAMPLE OF ARROW FUNCTION AND THAT FUNCTION HAVE ONE SWITCH STATEMENT WHICH EVALUATE THE ACTION TYPE
         export default (state = [], action) => {
             switch (action.type) {
                 case FETCH_DATA:
